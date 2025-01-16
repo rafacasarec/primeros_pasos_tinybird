@@ -1,0 +1,57 @@
+TOKEN "city_sales_earnings_endpoint_read_4144" READ
+
+NODE first_select
+SQL >
+
+    SELECT
+     store_city,
+     sales,
+     price
+    FROM retail_sport_commerce
+
+
+
+
+NODE second_node
+SQL >
+
+    SELECT
+      store_city,
+      sum(sales) as total_sales,
+      sum(price) as total_price
+    FROM first_select
+    group by store_city
+    order by total_price desc
+
+
+
+NODE endpoint
+SQL >
+
+    %
+    SELECT * FROM second_node
+    where store_city={{String(city, 'Granada')}}
+
+
+
+NODE city_sales_earnings_3
+SQL >
+
+    SELECT
+      store_city,
+      sumMerge(total_sales) as total_sales,
+      sumMerge(total_price) as total_price
+    FROM populate_mv_mv
+    group by store_city
+    order by total_price desc
+
+
+
+NODE city_sales_earnings_4
+SQL >
+
+    %
+    SELECT * FROM populate_mv_mv
+    where store_city={{String(city, 'Granada')}}
+
+

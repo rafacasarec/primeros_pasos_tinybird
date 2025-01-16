@@ -1,0 +1,19 @@
+
+SCHEMA >
+    `age` Int16 `json:$.age`,
+    `brand` String `json:$.brand`,
+    `browser` String `json:$.browser`,
+    `gender` String `json:$.gender`,
+    `price` Int16 `json:$.price`,
+    `product_id` Int32 `json:$.product_id`,
+    `product_name` String `json:$.product_name`,
+    `promo` Int16 `json:$.promo`,
+    `sales` Int16 `json:$.sales`,
+    `store_city` String `json:$.store_city`,
+    `store_id` Int16 `json:$.store_id`,
+    `timestamp` DateTime64(3) `json:$.timestamp`,
+    `utm_source` String `json:$.utm_source`
+
+ENGINE "MergeTree"
+ENGINE_PARTITION_KEY "toYear(timestamp)"
+ENGINE_SORTING_KEY "timestamp, store_city, store_id, utm_source"

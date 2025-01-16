@@ -1,0 +1,9 @@
+# Data Source created from Pipe 'city_sales_earnings_mv'
+
+SCHEMA >
+    `store_city` String,
+    `total_sales` AggregateFunction(sum, Int16),
+    `total_price` AggregateFunction(sum, Int16)
+
+ENGINE "AggregatingMergeTree"
+ENGINE_SORTING_KEY "store_city"
