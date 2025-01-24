@@ -1,0 +1,14 @@
+
+NODE endpoint
+DESCRIPTION >
+    Generated from the command line
+SQL >
+    SELECT 
+  product_name,
+  sum(sales) as total_sales,
+  sum(price) as total_earnings
+FROM retail_sport_commerce
+group by product_name
+order by total_sales desc
+
+    
