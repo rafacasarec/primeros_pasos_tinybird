@@ -96,5 +96,15 @@ jobs:
       # Eliminar rama de prueba
       - name: Delete test branch
         run: |
+          output=$(tb branch ls)
           BRANCH_NAME="tmp_ci_${_NORMALIZED_BRANCH_NAME}_${{ github.event.pull_request.number }}"
-          branch rm $BRANCH_NAME --yes
+          # Check if the branch name exists in the output
+          if echo "$output" | grep -q "\b$BRANCH_NAME\b"; then
+              tb \
+                --host ${{ secrets.tb_host }} \
+                --token ${{ secrets.tb_admin_token }} \
+                branch rm $BRANCH_NAME \
+                --yes
+          else
+              echo "Skipping clean up: The Branch '$BRANCH_NAME' does not exist."
+          fi
