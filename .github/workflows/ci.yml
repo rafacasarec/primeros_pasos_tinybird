@@ -66,15 +66,15 @@ jobs:
       - name: Delete previous test branch if exists
         run: |
           BRANCH_NAME="tmp_ci_${_NORMALIZED_BRANCH_NAME}_${{ github.event.pull_request.number }}"
-          output=$(tb --host ${{ secrets.tb_host }} --token ${{ secrets.tb_admin_token }} branch ls)
+          output=$(tb branch ls)
           if echo "$output" | grep -q "\b$BRANCH_NAME\b"; then
-            tb --host ${{ secrets.tb_host }} --token ${{ secrets.tb_admin_token }} branch rm $BRANCH_NAME --yes
+            tb branch rm $BRANCH_NAME --yes
           fi
 
       - name: Create new test branch
         run: |
           BRANCH_NAME="tmp_ci_${_NORMALIZED_BRANCH_NAME}_${{ github.event.pull_request.number }}"
-          tb --host ${{ secrets.tb_host }} --token ${{ secrets.tb_admin_token }} branch create $BRANCH_NAME --last-partition --wait
+          tb branch create $BRANCH_NAME --last-partition --wait
 
       # Desplegar cambios
       - name: Deploy changes to test branch
