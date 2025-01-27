@@ -78,7 +78,7 @@ jobs:
 
       # Desplegar cambios
       - name: Deploy changes to test branch
-        run: tb deploy --force --yes
+        run: tb deploy --yes
 
       # Pruebas
       - name: Run fixture tests
