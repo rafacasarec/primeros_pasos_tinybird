@@ -59,7 +59,10 @@ jobs:
         run: tb check
 
       - name: Authenticate with Tinybird
-        run: tb --host ${{ secrets.tb_host }} --token ${{ secrets.tb_admin_token }} auth info
+        run: |
+          echo "Using host: ${{ secrets.tb_host }}"
+          tb --host ${{ secrets.tb_host }} --token ${{ secrets.tb_admin_token }} auth info
+      
 
       # Crear rama de prueba
       - name: Delete previous test branch if exists
