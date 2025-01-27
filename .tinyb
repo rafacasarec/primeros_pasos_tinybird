@@ -2,10 +2,10 @@
     "host": "https://api.tinybird.co",
     "id": "073cfc5a-bb71-4663-babf-f632631e0c2e",
     "name": "test_retail",
-    "scope": "user",
-    "token": "p.eyJ1IjogIjA3M2NmYzVhLWJiNzEtNDY2My1iYWJmLWY2MzI2MzFlMGMyZSIsICJpZCI6ICIwYjI4NjU4OC0yNGU0LTQ2MTAtODQ4YS05M2NiZDBjNjM1NGMiLCAiaG9zdCI6ICJldV9zaGFyZWQifQ.vdDpeIEVUwnxbvOvKei5Whdwhw1_s3BgJd41m-rOzeY",
+    "scope": "admin",
+    "token": "p.eyJ1IjogIjA3M2NmYzVhLWJiNzEtNDY2My1iYWJmLWY2MzI2MzFlMGMyZSIsICJpZCI6ICJhYWU3ZDY3MS1iZWRkLTQ3MjQtYjVkMC0xNzFkMWNlYzU4ODIiLCAiaG9zdCI6ICJldV9zaGFyZWQifQ.qvhMN_CNxPiOL-YMPGKdeOuEEOnXKS7qksrZKwKRLqk",
     "tokens": {
-        "https://api.tinybird.co": "p.eyJ1IjogIjA3M2NmYzVhLWJiNzEtNDY2My1iYWJmLWY2MzI2MzFlMGMyZSIsICJpZCI6ICIwYjI4NjU4OC0yNGU0LTQ2MTAtODQ4YS05M2NiZDBjNjM1NGMiLCAiaG9zdCI6ICJldV9zaGFyZWQifQ.vdDpeIEVUwnxbvOvKei5Whdwhw1_s3BgJd41m-rOzeY"
+        "https://api.tinybird.co": "p.eyJ1IjogIjA3M2NmYzVhLWJiNzEtNDY2My1iYWJmLWY2MzI2MzFlMGMyZSIsICJpZCI6ICJhYWU3ZDY3MS1iZWRkLTQ3MjQtYjVkMC0xNzFkMWNlYzU4ODIiLCAiaG9zdCI6ICJldV9zaGFyZWQifQ.qvhMN_CNxPiOL-YMPGKdeOuEEOnXKS7qksrZKwKRLqk"
     },
     "user_email": "rafacasares97@gmail.com",
     "user_id": "7bee88b2-aed9-4e86-b23b-5e07891d6c15",
