@@ -1,0 +1,13 @@
+
+NODE endpoint
+DESCRIPTION >
+    Generated from the command line
+SQL >
+    SELECT gender,
+brand,
+  count(sales) as total_sales
+FROM retail_sport_commerce
+group by gender, brand
+order by brand desc
+
+    
