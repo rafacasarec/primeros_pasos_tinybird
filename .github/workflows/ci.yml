@@ -81,6 +81,9 @@ jobs:
         run: tb push --only-changes --force --yes
 
       # Pruebas
+      - name: Set execution permission for exec_test.sh
+        run: chmod +x ./scripts/exec_test.sh
+        
       - name: Run fixture tests
         run: |
           if [ -f ./scripts/exec_test.sh ]; then
