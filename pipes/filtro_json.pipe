@@ -1,0 +1,36 @@
+TOKEN "filtro_json_endpoint_read_5524" READ
+
+NODE untitled_pipe_7436_0
+SQL >
+
+    %
+    SELECT 
+        age,
+        brand,
+        browser,
+        gender,
+        price,
+        product_id,
+        product_name,
+        promo,
+        sales,
+        store_city,
+        store_id,
+        timestamp,
+        utm_source
+    FROM retail_sport_commerce
+    WHERE 1
+        {% if defined(filters) %}
+            {% for item in JSON(filters, '[]') %}
+                {% if item.get('operator', '') == 'equals' %}
+                    AND {{ column(item.get('operand', '')) }} == {{ item.get('value', '') }}
+                {% elif item.get('operator') == 'greater_than' %}
+                    AND {{ column(item.get('operand', '')) }} > {{ item.get('value', '') }}
+                {% elif item.get('operator') == 'in_list' %}
+                    AND {{ column(item.get('operand', '')) }} IN splitByChar(',', {{ item.get('value', '') }})
+                {% end %}
+            {% end %}
+        {% end %}
+
+
+
