@@ -1,9 +1,0 @@
-# Data Source created from Pipe 'sales_earnings_product_mv'
-
-SCHEMA >
-    `product_name` String,
-    `total_sales` AggregateFunction(sum, Int16),
-    `total_earnings` AggregateFunction(sum, Int16)
-
-ENGINE "AggregatingMergeTree"
-ENGINE_SORTING_KEY "product_name"

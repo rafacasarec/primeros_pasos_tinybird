@@ -1,0 +1,16 @@
+NODE sales_producto_mv
+SQL >
+
+    SELECT
+        brand,
+        product_name,
+        product_id,
+        toDate(timestamp) AS date_ingestion,
+        sales,
+        price
+    FROM retail_sport_commerce
+
+TYPE materialized
+DATASOURCE sales_producto_mv_mv
+
+

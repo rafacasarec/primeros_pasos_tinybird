@@ -1,0 +1,15 @@
+NODE sales_utm_source_mv
+SQL >
+
+    SELECT
+        utm_source,
+        countState(*) AS total_sessions,
+        sumState(sales) AS total_sales,
+        sumState(price * sales) AS revenue
+    FROM retail_sport_commerce
+    GROUP BY utm_source
+
+TYPE materialized
+DATASOURCE sales_utm_source_mv_mv
+
+

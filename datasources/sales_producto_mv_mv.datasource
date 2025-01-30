@@ -1,0 +1,14 @@
+# Data Source created from Pipe 'sales_producto'
+
+SCHEMA >
+    `brand` String,
+    `product_name` String,
+    `product_id` Int32,
+    `date_ingestion` Date,
+    `sales` Int16,
+    `price` Int16
+
+ENGINE "MergeTree"
+ENGINE_PARTITION_KEY "toYYYYMM(date_ingestion)"
+ENGINE_SORTING_KEY "product_name, date_ingestion, product_id"
+ENGINE_TTL "date_ingestion + toIntervalDay(35)"

@@ -1,0 +1,16 @@
+TOKEN "sales_location_endpoint_read_3936" READ
+
+NODE sales_location_mv
+SQL >
+
+    SELECT
+        store_city,
+        toDate(timestamp) AS date_ingestion,
+        sales,
+        price
+    FROM retail_sport_commerce
+
+TYPE materialized
+DATASOURCE sales_location_mv_mv
+
+
