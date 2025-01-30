@@ -1,0 +1,10 @@
+# Data Source created from Pipe 'sales_utm_source'
+
+SCHEMA >
+    `utm_source` String,
+    `total_sessions` AggregateFunction(count),
+    `total_sales` AggregateFunction(sum, Int16),
+    `revenue` AggregateFunction(sum, Int32)
+
+ENGINE "AggregatingMergeTree"
+ENGINE_SORTING_KEY "utm_source"

@@ -1,0 +1,17 @@
+NODE sales_extenda_aggragation_mv
+SQL >
+
+    SELECT
+        toStartOfFiveMinutes(timestamp) AS time_window,
+        uniqState(store_id) AS unique_stores,
+        countState(product_id) AS total_products,
+        sumState(sales) AS total_sales,
+        sumState(price * sales) AS total_revenue,
+        uniqState(utm_source) AS unique_traffic_sources
+    FROM retail_sport_commerce
+    GROUP BY time_window
+
+TYPE materialized
+DATASOURCE sales_extenda_aggragation_mv_mv
+
+

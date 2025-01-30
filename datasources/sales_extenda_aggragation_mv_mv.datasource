@@ -1,0 +1,14 @@
+# Data Source created from Pipe 'sales_extenda_aggragation'
+
+SCHEMA >
+    `time_window` DateTime,
+    `unique_stores` AggregateFunction(uniq, Int16),
+    `total_products` AggregateFunction(count, Int32),
+    `total_sales` AggregateFunction(sum, Int16),
+    `total_revenue` AggregateFunction(sum, Int32),
+    `unique_traffic_sources` AggregateFunction(uniq, String)
+
+ENGINE "AggregatingMergeTree"
+ENGINE_PARTITION_KEY "toYYYYMM(time_window)"
+ENGINE_SORTING_KEY "time_window"
+ENGINE_TTL "time_window + toIntervalDay(90)"

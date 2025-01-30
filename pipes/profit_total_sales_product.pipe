@@ -1,0 +1,25 @@
+NODE untitled_pipe_6292_0
+SQL >
+
+    %
+    {% if not defined(start_date) or not defined(end_date) %}
+      {{custom_error({'error': 'start_date y end_date son obligatorios', 'code': 400})}}
+    {% end %}
+    {% set column_date = 'time_window' %}
+
+    SELECT {% if date_diff_in_hours(end_date, start_date) < 8 %}
+              toStartOfFifteenMinutes({{column_date}})
+           {% elif date_diff_in_days(end_date, start_date) <= 7 %}
+              toStartOfHour({{column_date}})
+           {% else %}
+              toStartOfDay({{column_date}})
+           {% end %} AS date,
+           sumMerge(total_sales) AS total_sales,
+           sumMerge(total_revenue) AS total_revenue
+    FROM sales_extenda_aggragation_mv_mv
+    WHERE {{column(column_date)}} BETWEEN {{ DateTime(start_date) }} AND {{ DateTime(end_date) }}
+    GROUP BY date
+    ORDER BY date ASC;
+
+
+
